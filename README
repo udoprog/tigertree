@@ -1,0 +1,3 @@
+This is a C port of the Tiger Hash implementation on dcplusplus.sf.net
+
+I got so frustrated that there were no proper cross platform implementation for the Tiger Hash (except for mhash, which is not maintained properly anymore)
