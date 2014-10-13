@@ -20,12 +20,14 @@
 #if !defined(TIGER_HASH_H)
 #define TIGER_HASH_H
 
+#include <stddef.h>
+#include <stdint.h>
+
 #if defined(_MSC_VER) || defined(__MINGW32__)
 #define _LL(x) x##ll
 #define _ULL(x) x##ull
 #define I64_FMT "%I64d"
 #define U64_FMT "%I64d"
-
 #elif defined(SIZEOF_LONG) && SIZEOF_LONG == 8
 #define _LL(x) x##l
 #define _ULL(x) x##ul
@@ -58,7 +60,5 @@ void      tigerhash_compress(tigerhash *, const uint64_t* data, uint64_t state[3
 uint8_t*  tigerhash_finalize(tigerhash *);
 void      tigerhash_update(tigerhash *, const void* data, size_t len);
 uint8_t*  tigerhash_result(tigerhash *);
-
-const uint64_t tigerhash_table[];
 
 #endif // !defined(TIGER_HASH_H)

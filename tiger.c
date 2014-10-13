@@ -18,7 +18,6 @@
  * This program has been ported into C by John-John Tedro <johnjohn.tedro@gmail.com>
  */
 #include <stdlib.h>
-#include <stdint.h>
 #include <string.h>
 #include <assert.h>
 
@@ -152,6 +151,10 @@
 	state[2] = c; \
 }
 
+const
+uint64_t
+tigerhash_table[4*256];
+
 tigerhash *
 tigerhash_new()
 {
@@ -282,7 +285,7 @@ tigerhash_finalize(th)
 const
 uint64_t
 tigerhash_table[4*256] = {
-	_ULL(0x02AAB17CF7E90C5E)   /*    0 */,    _ULL(0xAC424B03E243A8EC)   /*    1 */,
+		_ULL(0x02AAB17CF7E90C5E)   /*    0 */,    _ULL(0xAC424B03E243A8EC)   /*    1 */,
 		_ULL(0x72CD5BE30DD5FCD3)   /*    2 */,    _ULL(0x6D019B93F6F97F3A)   /*    3 */,
 		_ULL(0xCD9978FFD21F9193)   /*    4 */,    _ULL(0x7573A1C9708029E2)   /*    5 */,
 		_ULL(0xB164326B922A83C3)   /*    6 */,    _ULL(0x46883EEE04915870)   /*    7 */,
@@ -795,20 +798,3 @@ tigerhash_table[4*256] = {
 		_ULL(0xCD56D9430EA8280E)   /* 1020 */,    _ULL(0xC12591D7535F5065)   /* 1021 */,
 		_ULL(0xC83223F1720AEF96)   /* 1022 */,    _ULL(0xC3A0396F7363A51F)   /* 1023 */
 };
-
-#define STRINGTEST "The quick brown fox jumps over the lazy dog"
-
-#include <stdio.h>
-int main() {
-  tigerhash *th = tigerhash_new();
-
-  void *nil;
-
-  tigerhash_update(th, STRINGTEST, strlen(STRINGTEST));
-
-  uint8_t *res;
-
-  res = tigerhash_finalize(th);
-  
-  printf("%48x\n", *res);
-}
