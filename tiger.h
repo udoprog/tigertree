@@ -41,7 +41,7 @@
 #endif
 
 #define TIGER_BITS (192)
-#define TIGER_BYTES (BITS / 8)
+#define TIGER_BYTES (TIGER_BITS / 8)
 #define TIGER_BLOCK_SIZE (512/8)
 
 typedef struct tigerhash_t
