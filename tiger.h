@@ -61,6 +61,7 @@ typedef struct tigerhash_t
 } tigerhash;
 
 tigerhash *tigerhash_new();
+void       tigerhash_free(tigerhash *);
 void      tigerhash_compress(tigerhash *, const uint64_t* data, uint64_t state[3]);
 uint8_t*  tigerhash_finalize(tigerhash *);
 void      tigerhash_update(tigerhash *, const void* data, size_t len);

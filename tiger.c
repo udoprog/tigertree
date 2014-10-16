@@ -166,6 +166,13 @@ tigerhash_new()
   return new;
 }
 
+void
+tigerhash_free(th)
+  tigerhash *th;
+{
+  free(th);
+}
+
 inline
 uint8_t *
 tigerhash_result(th)
